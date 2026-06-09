@@ -8,13 +8,13 @@ from code.Constants import C_PINK, WIN_WIDTH, C_GREEN, MENU_OPTION, C_WINE, C_CR
 class Menu:
     def __init__(self, window: Surface):
         self.window = window
-        self.surf = pygame.image.load("./assets/MenuBg.png")
+        self.surf = pygame.image.load("./assets/MenuBg.png").convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
         menu_option = 0
-        # pygame.mixer_music.load("")
-        # pygame.mixer_music.play(-1)
+        pygame.mixer_music.load("./assets/MenuTrack.wav")
+        pygame.mixer_music.play(-1)
         while True:
             self.window.blit(self.surf, self.rect)
             self.menu_text(36, "Hawaii", C_PINK, (MENU_TEXT_MARGIN, 55))
