@@ -10,6 +10,7 @@ ENTITY_SPEED = {
     "Level1Bg1": 1,
     "Level1Bg2": 2,
     "Level1Bg3": 3,
+    "Kunoichi": 2,
 }
 
 # M
@@ -21,3 +22,9 @@ MENU_TEXT_MARGIN = 450
 # W
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
+
+# C
+CHARACTER_FLOOR_BASE = WIN_HEIGHT - 6
+CHARACTER_JUMP_HEIGHT = {
+    "Kunoichi": 40,
+}
