@@ -1,8 +1,10 @@
+import random
+
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Constants import WIN_HEIGHT, C_CREAM
+from code.Constants import WIN_HEIGHT, C_CREAM, EVENT_ENEMY, SPAWN_TIME_ENEMY
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -16,6 +18,7 @@ class Level:
         self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
         self.entity_list.append(EntityFactory.get_entity("Kunoichi"))
         self.timeout = 20000
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME_ENEMY)
 
     def run(self):
         # pygame.mixer_music.load(f"./assets/{self.name}.wav")
@@ -31,6 +34,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(("Jellyfish", "Octopus"))
+                    self.entity_list.append((EntityFactory.get_entity(choice)))
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_CREAM, (10, 5))
             self.level_text(14, f'fps: {clock.get_fps():.0f}', C_CREAM, (10, WIN_HEIGHT - 35))
