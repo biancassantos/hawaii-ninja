@@ -35,6 +35,32 @@ ENTITY_HEALTH = {
     'OctopusShot': 1,
 }
 
+ENTITY_DAMAGE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Level1Bg3': 0,
+    'Kunoichi': 1,
+    'KunoichiShot': 25,
+    'Jellyfish': 1,
+    'JellyfishShot': 20,
+    'Octopus': 1,
+    'OctopusShot': 15,
+}
+
+ENTITY_SCORE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Level1Bg3': 0,
+    'Kunoichi': 0,
+    'KunoichiShot': 0,
+    'Jellyfish': 100,
+    'JellyfishShot': 0,
+    'Octopus': 125,
+    'OctopusShot': 0,
+}
+
 ENTITY_SHOT_DELAY = {
     'Kunoichi': 20,
     'Jellyfish': 100,

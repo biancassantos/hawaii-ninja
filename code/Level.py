@@ -36,6 +36,8 @@ class Level:
                     shot = ent.shoot()
                     if shot is not None:
                         self.entity_list.append(shot)
+                if ent.name == "Kunoichi":
+                    self.level_text(14, f'Kunoichi - Health: {ent.health} | Score: {ent.score}', C_CREAM, (10, 22))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
