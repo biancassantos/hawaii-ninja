@@ -4,7 +4,8 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Constants import WIN_HEIGHT, C_CREAM, EVENT_ENEMY, SPAWN_TIME_ENEMY
+from code.Constants import WIN_HEIGHT, C_CREAM, EVENT_ENEMY, SPAWN_TIME_ENEMY, EVENT_TIMEOUT, TIMEOUT_STEP, \
+    TIMEOUT_LEVEL
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -13,17 +14,20 @@ from code.Player import Player
 
 
 class Level:
-    def __init__(self, window, name, game_mode):
+    def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int]):
         self.window = window
         self.name = name
         self.game_mode = game_mode
+        self.timeout = TIMEOUT_LEVEL[self.name]
         self.entity_list: list[Entity] = []
-        self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
-        self.entity_list.append(EntityFactory.get_entity("Kunoichi"))
-        self.timeout = 20000
+        self.entity_list.extend(EntityFactory.get_entity(f"{self.name}Bg"))
+        player = EntityFactory.get_entity("Kunoichi")
+        player.score = player_score[0]
+        self.entity_list.append(player)
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME_ENEMY)
+        pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
-    def run(self):
+    def run(self, player_score: list[int]):
         # pygame.mixer_music.load(f"./assets/{self.name}.wav")
         # pygame.mixer_music.play()
         clock = pygame.time.Clock()
@@ -46,10 +50,23 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(("Jellyfish", "Octopus"))
                     self.entity_list.append((EntityFactory.get_entity(choice)))
+                # End of level (timeout)
+                if event.type == EVENT_TIMEOUT:
+                    self.timeout -= TIMEOUT_STEP
+                    if self.timeout == 0:
+                        for ent in self.entity_list:
+                            if isinstance(ent, Player):
+                                player_score[0] = ent.score
+                        return True
+                # End of level (no player)
+                found_player = False
+                for ent in self.entity_list:
+                    if isinstance(ent, Player):
+                        found_player = True
+                if not found_player:
+                    return False
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_CREAM, (10, 5))
-            self.level_text(14, f'fps: {clock.get_fps():.0f}', C_CREAM, (10, WIN_HEIGHT - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', C_CREAM, (10, WIN_HEIGHT - 20))
 
             pygame.display.flip()
             # Collisions
