@@ -14,10 +14,11 @@ from code.Player import Player
 
 
 class Level:
-    def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int]):
+    def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int], has_boss: bool = False):
         self.window = window
         self.name = name
         self.game_mode = game_mode
+        self.has_boss = has_boss
         self.timeout = TIMEOUT_LEVEL[self.name]
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity(f"{self.name}Bg"))
@@ -49,6 +50,8 @@ class Level:
                     quit()
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(("Jellyfish", "Octopus"))
+                    if self.has_boss:
+                        choice = random.choice(("Jellyfish", "Octopus", "Gorgon"))
                     self.entity_list.append((EntityFactory.get_entity(choice)))
                 # End of level (timeout)
                 if event.type == EVENT_TIMEOUT:

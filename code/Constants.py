@@ -19,12 +19,18 @@ ENTITY_SPEED = {
     "Level2Bg1": 2,
     "Level2Bg2": 1,
     "Level2Bg3": 2,
+    "Level3Bg0": 0,
+    "Level3Bg1": 1,
+    "Level3Bg2": 2,
+    "Level3Bg3": 1,
     "Kunoichi": 2,
     "KunoichiShot": 2,
     "Jellyfish": 1,
     "JellyfishShot": 3,
     "Octopus": 2,
     "OctopusShot": 3,
+    "Gorgon": 2,
+    "GorgonShot": 3,
 }
 
 ENTITY_HEALTH = {
@@ -36,12 +42,18 @@ ENTITY_HEALTH = {
     'Level2Bg1': 999,
     'Level2Bg2': 999,
     'Level2Bg3': 999,
+    'Level3Bg0': 999,
+    'Level3Bg1': 999,
+    'Level3Bg2': 999,
+    'Level3Bg3': 999,
     'Kunoichi': 300,
     'KunoichiShot': 1,
     'Jellyfish': 50,
     'JellyfishShot': 1,
     'Octopus': 60,
     'OctopusShot': 1,
+    "Gorgon": 100,
+    "GorgonShot": 1,
 }
 
 ENTITY_DAMAGE = {
@@ -53,12 +65,18 @@ ENTITY_DAMAGE = {
     'Level2Bg1': 0,
     'Level2Bg2': 0,
     'Level2Bg3': 0,
+    'Level3Bg0': 0,
+    'Level3Bg1': 0,
+    'Level3Bg2': 0,
+    'Level3Bg3': 0,
     'Kunoichi': 1,
     'KunoichiShot': 25,
     'Jellyfish': 1,
     'JellyfishShot': 20,
     'Octopus': 1,
     'OctopusShot': 15,
+    'Gorgon': 2,
+    'GorgonShot': 30,
 }
 
 ENTITY_SCORE = {
@@ -70,18 +88,25 @@ ENTITY_SCORE = {
     'Level2Bg1': 0,
     'Level2Bg2': 0,
     'Level2Bg3': 0,
+    'Level3Bg0': 0,
+    'Level3Bg1': 0,
+    'Level3Bg2': 0,
+    'Level3Bg3': 0,
     'Kunoichi': 0,
     'KunoichiShot': 0,
     'Jellyfish': 100,
     'JellyfishShot': 0,
     'Octopus': 125,
     'OctopusShot': 0,
+    'Gorgon': 200,
+    'GorgonShot': 0,
 }
 
 ENTITY_SHOT_DELAY = {
     'Kunoichi': 20,
     'Jellyfish': 100,
     'Octopus': 100,
+    'Gorgon': 80,
 }
 
 # F
@@ -100,6 +125,7 @@ SPAWN_TIME_ENEMY = 8000
 TIMEOUT_LEVEL = {
     'Level1': 20000,
     'Level2': 20000,
+    'Level3': 20000,
 }
 TIMEOUT_STEP = 100
 
