@@ -2,7 +2,7 @@ import pygame
 from pygame import Rect, Surface
 from pygame.font import Font
 
-from code.Constants import C_PINK, WIN_WIDTH, C_GREEN, MENU_OPTION, C_WINE, C_CREAM, MENU_TEXT_MARGIN
+from code.Constants import C_PINK, C_GREEN, MENU_OPTION, C_WINE, C_CREAM, MENU_TEXT_MARGIN, F_JETBRAINS_BOLD
 
 
 class Menu:
@@ -52,9 +52,7 @@ class Menu:
                         return MENU_OPTION[menu_option]
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        font_path = "./assets/JetBrainsMono-Bold.ttf"
-
-        text_font: Font = pygame.font.Font(font_path, text_size)
+        text_font: Font = pygame.font.Font(F_JETBRAINS_BOLD, text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)

@@ -4,8 +4,8 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Constants import WIN_HEIGHT, C_CREAM, EVENT_ENEMY, SPAWN_TIME_ENEMY, EVENT_TIMEOUT, TIMEOUT_STEP, \
-    TIMEOUT_LEVEL
+from code.Constants import C_CREAM, EVENT_ENEMY, SPAWN_TIME_ENEMY, EVENT_TIMEOUT, TIMEOUT_STEP, \
+    TIMEOUT_LEVEL, F_JETBRAINS_BOLD
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -74,9 +74,7 @@ class Level:
             EntityMediator.verify_health(self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
-        font_path = "./assets/JetBrainsMono-Bold.ttf"
-
-        text_font: Font = pygame.font.Font(font_path, text_size)
+        text_font: Font = pygame.font.Font(F_JETBRAINS_BOLD, text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)
