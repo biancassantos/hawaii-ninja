@@ -13,8 +13,9 @@ class Menu:
 
     def run(self):
         menu_option = 0
-        #pygame.mixer_music.load("./assets/MenuTrack.wav")
-        #pygame.mixer_music.play(-1)
+        pygame.mixer_music.load("./assets/MenuTrack.wav")
+        pygame.mixer_music.set_volume(0.4)
+        pygame.mixer_music.play(-1)
         while True:
             self.window.blit(self.surf, self.rect)
             self.menu_text(36, "Hawaii", C_PINK, (MENU_TEXT_MARGIN, 55))

@@ -25,11 +25,12 @@ class Level:
         player = EntityFactory.get_entity("Kunoichi")
         player.score = player_score[0]
         self.entity_list.append(player)
-        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME_ENEMY)
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME_ENEMY[self.name])
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
     def run(self, player_score: list[int]):
         # pygame.mixer_music.load(f"./assets/{self.name}.wav")
+        pygame.mixer_music.set_volume(0.3)
         # pygame.mixer_music.play()
         clock = pygame.time.Clock()
         while True:

@@ -15,8 +15,8 @@ class Score:
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def save(self, game_mode: str, player_score: list[int]):
-        # pygame.mixer_music.load("./assets/ScoreTrack.wav")
-        # pygame.mixer_music.play(-1)
+        pygame.mixer_music.load("./assets/ScoreTrack.mp3")
+        pygame.mixer_music.play(-1)
         db_proxy = DBProxy("DBScore")
         name = ""
         while True:
@@ -47,8 +47,8 @@ class Score:
             pass
 
     def show(self):
-        #pygame.mixer_music.load("./assets/ScoreTrack.mp3")
-        #pygame.mixer_music.play(-1)
+        pygame.mixer_music.load("./assets/ScoreTrack.mp3")
+        pygame.mixer_music.play(-1)
         self.window.blit(self.surf, self.rect)
         self.score_text(48, 'TOP 10 SCORE', C_GREEN, SCORE_POS['Title'])
         self.score_text(18, 'NAME     SCORE           DATE      ', C_PINK, SCORE_POS['Label'])

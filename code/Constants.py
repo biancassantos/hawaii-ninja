@@ -72,10 +72,10 @@ ENTITY_DAMAGE = {
     'Kunoichi': 1,
     'KunoichiShot': 25,
     'Jellyfish': 1,
-    'JellyfishShot': 20,
-    'Octopus': 1,
-    'OctopusShot': 15,
-    'Gorgon': 2,
+    'JellyfishShot': 15,
+    'Octopus': 2,
+    'OctopusShot': 20,
+    'Gorgon': 5,
     'GorgonShot': 30,
 }
 
@@ -119,12 +119,16 @@ MENU_OPTION = ('Iniciar',
 MENU_TEXT_MARGIN = 450
 
 # S
-SPAWN_TIME_ENEMY = 8000
+SPAWN_TIME_ENEMY = {
+    'Level1': 3000,
+    'Level2': 2000,
+    'Level3': 1500,
+}
 
 # T
 TIMEOUT_LEVEL = {
-    'Level1': 20000,
-    'Level2': 20000,
+    'Level1': 60000,
+    'Level2': 40000,
     'Level3': 20000,
 }
 TIMEOUT_STEP = 100
